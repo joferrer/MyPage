@@ -1,7 +1,9 @@
-import { CardContent, Grid, Link, Typography } from "@mui/material"
+import { Breadcrumbs, Button, CardContent, Grid, Link, Pagination, Typography } from "@mui/material"
 import { CardComponent } from "./CardComponent"
 import { meme } from "../../public/img"
 import { calculateAge } from "../helpers/age"
+import { NavigateBefore, NavigateNext } from "@mui/icons-material"
+import { useState } from "react"
 
 const myPhotoLink = meme
 const myNameInit = " Jeison Ferrer!"
@@ -35,6 +37,22 @@ const SimpleCard = ({title,children})=>{
     </CardComponent>
 }
 
+const LanguageSelector = ()=>{
+    const lenguages = ["EN", "ES"]
+    const [lenguageSelect,setLenguageSelect] = useState(0)
+
+    return <SimpleCard title={""} onClick={()=> setLenguageSelect(1)} >
+        <Grid display={"flex"} sx={{justifyContent:"center",flexDirection:"column"}} >
+            <Typography variant="h2">{lenguages[lenguageSelect]}</Typography>
+            <Breadcrumbs aria-label="breadcrumb" sx={{justifyContent:"center"}}>
+                {
+                    lenguages.map( lg => <Link key={lg} underline="none" color={"white"}>{lg}</Link>)
+                }
+        </Breadcrumbs>
+        </Grid>           
+    </SimpleCard>
+}
+
 export const PrincipalPage = () => {
 
     return <Grid container spacing={2}>
@@ -55,9 +73,8 @@ export const PrincipalPage = () => {
         <SimpleCard title={"Age"} >
             <Typography variant="h2" >{calculateAge()}</Typography>
         </SimpleCard >
-        <SimpleCard title={""} >
-            <Link><Typography>EN</Typography></Link>
-        </SimpleCard>
+        
+        <LanguageSelector />
 
     </Grid>
 
