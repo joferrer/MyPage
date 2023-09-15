@@ -1,8 +1,8 @@
-import { Breadcrumbs, Button, CardContent, Grid, Link, Pagination, Typography } from "@mui/material"
+import { Breadcrumbs, Button, CardContent, Grid, Icon, Link, Pagination, Typography } from "@mui/material"
 import { CardComponent } from "./CardComponent"
 import { meme } from "../../public/img"
 import { calculateAge } from "../helpers/age"
-import { NavigateBefore, NavigateNext } from "@mui/icons-material"
+import { GitHub, LinkedIn, NavigateBefore, NavigateNext } from "@mui/icons-material"
 import { useState } from "react"
 
 const myPhotoLink = meme
@@ -29,7 +29,8 @@ const SimpleCard = ({title,children})=>{
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
-                textAlign: "center"
+                textAlign: "center",
+                padding:0
             }}>
                 <Typography gutterBottom variant="h5" component="div"> {title}</Typography>
                 {children}
@@ -75,9 +76,18 @@ export const PrincipalPage = () => {
         <SimpleCard title={"Age"} >
             <Typography variant="h2" >{calculateAge()}</Typography>
         </SimpleCard >
-        
         <LanguageSelector />
 
+        <SimpleCard>
+            <Link color={"#ffff"} href="https://www.linkedin.com/in/jo-ferrer/">
+                <LinkedIn sx={{width:"140px", height:"140px",}}/>
+            </Link>
+        </SimpleCard>
+        <SimpleCard>
+            <Link color={"#ffff"} href="https://github.com/joferrer">
+                <GitHub sx={{width:"140px", height:"140px",}}/>
+            </Link>
+        </SimpleCard>
     </Grid>
 
 }
