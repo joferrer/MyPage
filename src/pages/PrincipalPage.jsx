@@ -38,16 +38,18 @@ const SimpleCard = ({title,children})=>{
 }
 
 const LanguageSelector = ()=>{
-    const lenguages = ["EN", "ES"]
+    const lenguages = ["EN", "ES", ]
     const [lenguageSelect,setLenguageSelect] = useState(0)
 
-    return <SimpleCard title={""} onClick={()=> setLenguageSelect(1)} >
-        <Grid display={"flex"} sx={{justifyContent:"center",flexDirection:"column"}} >
-            <Typography variant="h2">{lenguages[lenguageSelect]}</Typography>
-            <Breadcrumbs aria-label="breadcrumb" sx={{justifyContent:"center"}}>
-                {
-                    lenguages.map( lg => <Link key={lg} underline="none" color={"white"}>{lg}</Link>)
-                }
+    return <SimpleCard title={""} >
+        <Grid display={"flex"} sx={{justifyContent:"center",flexDirection:"column", cursor:"pointer"}}  
+             onClick={()=> setLenguageSelect(lenguageSelect == lenguages.length-1? 0: lenguageSelect+1)}>
+
+                <Typography variant="h2" >{lenguages[lenguageSelect]}</Typography>
+                <Breadcrumbs aria-label="breadcrumb" sx={{justifyContent:"center"}}>
+                    {
+                        lenguages.map( lg => <Link key={lg} underline="none" color={lenguages[lenguageSelect] == lg ? "white":"darkgrey"}>{lg}</Link>)
+                    }
         </Breadcrumbs>
         </Grid>           
     </SimpleCard>
@@ -57,7 +59,7 @@ export const PrincipalPage = () => {
 
     return <Grid container spacing={2}>
 
-        <CardComponent xs={12} md={8} sm={12}>
+        <CardComponent xs={12} md={8} sm={12} hg={2}>
             <Typography variant="body1">
                 Hi! I am
                 <Typography variant="body1" component="span" fontWeight="bold">
