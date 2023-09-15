@@ -59,7 +59,7 @@ export const PrincipalPage = () => {
 
     return <Grid container spacing={2}>
 
-        <CardComponent xs={12} md={8} sm={12} hg={2}>
+        <CardComponent xs={12} md={8} sm={12} >
             <Typography variant="body1">
                 Hi! I am
                 <Typography variant="body1" component="span" fontWeight="bold">
