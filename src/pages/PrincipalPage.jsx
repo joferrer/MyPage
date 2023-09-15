@@ -42,7 +42,7 @@ const LanguageSelector = ()=>{
     const lenguages = ["EN", "ES", ]
     const [lenguageSelect,setLenguageSelect] = useState(0)
 
-    return <SimpleCard title={""} >
+    return <SimpleCard >
         <Grid display={"flex"} sx={{justifyContent:"center",flexDirection:"column", cursor:"pointer"}}  
              onClick={()=> setLenguageSelect(lenguageSelect == lenguages.length-1? 0: lenguageSelect+1)}>
 
@@ -83,7 +83,7 @@ export const PrincipalPage = () => {
                 <LinkedIn sx={{width:"140px", height:"140px",}}/>
             </Link>
         </SimpleCard>
-        <SimpleCard>
+        <SimpleCard className="simpleCard">
             <Link color={"#ffff"} href="https://github.com/joferrer">
                 <GitHub sx={{width:"140px", height:"140px",}}/>
             </Link>
